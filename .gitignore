@@ -116,5 +116,3 @@ dist
 .pnp.*
 
 # custom
-config.json
-targets.json

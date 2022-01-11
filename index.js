@@ -6,7 +6,7 @@ var tweets = {};
 
 async function getTweets(uid) {
   var params = {
-    "max_results": 10,
+    "max_results": process.env.numTweets,
     "tweet.fields": "created_at,text",
     "expansions": "author_id"
   };
@@ -22,7 +22,7 @@ async function getTweets(uid) {
   return res.data.data;
 }
 
-//every minute
+//Core loop
 setInterval(async () => {
   for(var i = 0; i < targets.length; i++) {
     var target = targets[i];
@@ -66,6 +66,6 @@ setInterval(async () => {
     tweets[target] = data;
   }
 
-}, 1000 * 30);
+}, process.env.interval);
 
 console.log("Starting!");
